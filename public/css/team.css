@@ -1,0 +1,270 @@
+
+.ourTeam-hedding{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    height:200px;
+    width:100%;
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background: linear-gradient(rgba(0,0,0,.10)); 
+}
+.ourTeam-hedding h1{
+    color:#fff;
+    padding:70px 0px;
+    font-weight:900;
+    z-index: 1;
+}
+.ourTeam-box{
+    border-top: 6px solid #5DDDD3;
+    background-color: #FFFFFF;
+}
+.section1{
+    padding: 30px 0px 0px 0px;
+}
+.section1 img{
+    border:5px solid #5DDDD3;
+    padding:5px;
+    border-radius:50%;
+    height:170px;
+    width: 170px;
+}
+.section2 h1{
+    font-size:20px;
+    color:#C1C1C1;
+    margin:0px;
+    border-bottom:2px solid #5DDDD3;
+    display: inline-block;
+    padding: 10px 0px;
+}
+.section2 p{
+    background-color: #5DDDD3;
+    display: inline-block;
+    font-weight: bold;
+    color:#fff;
+    padding: 5px 15px;
+    border-radius: 3px;
+    margin-top: -20px;    
+}
+.section2 span{
+    color:#979597;
+}
+.section2 label{
+    background-color: #5DDDD3;
+    padding: 8px 10px 8px 10px;
+    color:#fff;
+    font-weight: normal;
+    margin: 30px 0px 35px 0px;
+    border-radius: 2px;
+}
+.section3 p{
+    padding: 10px 15px 0px 15px;
+    font-size:12px;
+    color:#c3c9c9;
+}
+.section4{
+    padding:10px 0px 50px 0px;
+}
+.section4 i{
+    color:#fff;
+    padding:3px;
+    border-radius: 2px; 
+    font-size: 12px;
+    background-color: #5DDDD3;
+    cursor: pointer;
+}
+.section-info{
+    border-top:6px solid #90DFAA;
+}
+.section-danger{
+    border-top:6px solid #FD8469;
+}
+.section-info .section1 img{
+    border:5px solid #90DFAA;
+    padding:5px;
+}
+.section-info .section2 p{
+    background-color: #90DFAA;
+    color:#fff;
+}
+.section-danger .section2 p{
+    background-color: #FD8469;
+    color:#fff;
+}
+.section-danger .section1 img{
+    border:5px solid #FD8469;
+    padding:5px;
+}
+.section-info .section4 i{
+    background-color: #90DFAA;  
+}
+.section-danger .section4 i{
+    background-color: #FD8469;  
+}
+.section-info .section2 h1{
+    border-bottom:2px solid #90DFAA;
+}
+.section-danger .section2 h1{
+    border-bottom:2px solid #FD8469;
+}
+
+
+
+
+/*=============================================================
+    Authour URL: www.designbootstrap.com
+    
+    http://www.designbootstrap.com/
+
+    License: MIT     
+========================================================  */
+
+/*============================================================
+BACKGROUND COLORS
+============================================================*/
+.db-bk-color-one {
+    background-color: #f55039;
+}
+
+.db-bk-color-two {
+    background-color: #46A6F7;
+}
+
+.db-bk-color-three {
+    background-color: #47887E;
+}
+
+.db-bk-color-six {
+    background-color: #F59B24;
+}
+/*============================================================
+PRICING STYLES
+==========================================================*/
+.db-padding-btm {
+    padding-bottom: 50px;
+}
+.db-button-color-square {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.50);
+    border: none;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+    .db-button-color-square:hover {
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.50);
+        border: none;
+    }
+
+
+.db-pricing-eleven {
+    margin-bottom: 30px;
+    margin-top: 50px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    color: #fff;
+    line-height: 30px;
+}
+
+    .db-pricing-eleven ul {
+        list-style: none;
+        margin: 0;
+        text-align: center;
+        padding-left: 0px;
+    }
+
+        .db-pricing-eleven ul li {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            cursor: pointer;
+        }
+
+            .db-pricing-eleven ul li i {
+                margin-right: 5px;
+            }
+
+
+    .db-pricing-eleven .price {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 40px 20px 20px 20px;
+        font-size: 60px;
+        font-weight: 900;
+        color: #FFFFFF;
+    }
+
+        .db-pricing-eleven .price small {
+            color: #B8B8B8;
+            display: block;
+            font-size: 12px;
+            margin-top: 22px;
+        }
+
+    .db-pricing-eleven .type {
+        background-color: #52E89E;
+        padding: 50px 20px;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 30px;
+    }
+
+    .db-pricing-eleven .pricing-footer {
+        padding: 20px;
+    }
+
+.db-attached > .col-lg-4,
+.db-attached > .col-lg-3,
+.db-attached > .col-md-4,
+.db-attached > .col-md-3,
+.db-attached > .col-sm-4,
+.db-attached > .col-sm-3 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.db-pricing-eleven.popular {
+    margin-top: 10px;
+}
+
+    .db-pricing-eleven.popular .price {
+        padding-top: 80px;
+    }
+
+
+
+
+   
+.carousel {
+  margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 1;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 400px;
+  background-color:#555;
+}
+.carousel img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 400px;
+}
+
+
+.carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+  .overlay { 
+    color:#fff;
+    position:absolute;
+    z-index:12;
+    top:50%;
+    left:0;
+    width:100%;
+    text-align:center;
+  }
