@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+
 Route::get('register/verify/{token}','Auth\RegisterController@verify');
 
 Route::group(['middleware'=> ['web' , 'admin']] , function(){

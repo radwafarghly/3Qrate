@@ -70,6 +70,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
+     *
      * @param  array  $data
      * @return \App\User
      */
@@ -115,6 +116,8 @@ class RegisterController extends Controller
         // The verified method has been added to the user model and chained here
         // for better readability
         User::where('email_token',$token)->firstOrFail()->verified();
+        Session::flash('message', 'your email verified !');
         return redirect('login');
+
     }
 }

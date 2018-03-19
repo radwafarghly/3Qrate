@@ -20,6 +20,9 @@ body{
 <div class="container" style="margin:70px; 0px">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+        @if (Session::has('message'))
+          <div class="alert alert-info">{{ Session::get('message') }}</div>
+        @endif
             <div class="panel" style="background-color:#f1f1f1;">
                 <div class="panel-heading" style="color:#00c94a; font-size:20px; 
                 background-color:#f1f1f1; border:#f1f1f1;">Login</div>
@@ -33,7 +36,6 @@ body{
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
