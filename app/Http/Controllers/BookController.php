@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use DB;
 use App\Project;
@@ -40,10 +41,13 @@ class BookController extends Controller
 */
     $projects=Project::with('compound')->get();
     $current_userid = \Auth::user()->id;
-    $user =DB::table('users')
-    ->select('users.name','users.email')
-    ->where('users.id',$current_userid)
-    ->get();
+
+//    $user =DB::table('users')
+//    ->select('users.name','users.email')
+//    ->where('users.id',$current_userid)
+//    ->get();
+//
+    $user=User::where('users.id',$current_userid)->get();
 
     $book_unit=DB::table('projects')
     ->join('compounds','projects.id','=','compounds.project_id')
@@ -53,6 +57,7 @@ class BookController extends Controller
     ->select('units.number As unit_num','units.price AS unit_price','units.size As unit_size','projects.name As project_name','compounds.name As compound_name','compounds.location As compound_location','buildings.number As building_num','units.id As unit_id','books.id AS book_id')
     ->where('books.user_id',$current_userid)
     ->get();
+
 
     return view ('user.profile', compact('projects','book_unit','user'));
     }
@@ -65,7 +70,7 @@ class BookController extends Controller
     public function bookunit($compound_name,$building_number,$unit_number,$unit_id)
     {
 
-        $current_userid = \Auth::user()->id;        
+        $current_userid =Auth::id;
         $check = DB::table('books')->where('unit_id','=', $unit_id)->where('user_id','=',$current_userid)->first();
         if ($check === null) {
     

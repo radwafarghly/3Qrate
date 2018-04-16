@@ -58,6 +58,8 @@ class RegisterController extends Controller
         $projects = Project::with('compound')->get();
         return view('auth.register' , compact('projects'));
     }
+
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -74,6 +76,8 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
+
     protected function create(array $data)
     {
         return User::create([
@@ -88,7 +92,7 @@ class RegisterController extends Controller
     {
         // Laravel validation
         $validator = $this->validator($request->all());
-        if ($validator->fails()) 
+        if ($validator->fails())
         {
             $this->throwValidationException($request, $validator);
         }

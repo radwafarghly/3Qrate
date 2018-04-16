@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\AddUnitNotification;
+use App\User;
 use Illuminate\Http\Request;
 use App\Unit;
 use App\Building;
@@ -10,6 +12,7 @@ use App\Project;
 
 use App\Image;
 
+use Notification;
 class UnitController extends Controller
 {
     /**
@@ -85,7 +88,10 @@ class UnitController extends Controller
          $unit->building_id = $request->input('building_id');
          $unit->img = $request->input('img');         
          $unit->img=$fileNameStore;
-         $unit->save();
+         if ($unit->save()){
+             $users=User::all();
+             Notification::send($users, new AddUnitNotification($unit));
+         }
 
        // $input = $request->all();
 
@@ -109,6 +115,7 @@ class UnitController extends Controller
     
             }
         }
+
         return redirect()->route('unit.index')
 
                         ->with('success','Unit created successfully');
@@ -260,11 +267,11 @@ and compounds.name='assuit'*/
         ->where('units.number',$unit_number)
         ->get();
        /* select COUNT(images.id) from images join units on units.id = images.img_id WHERE units.number = 45 */
-        $countimages=DB::table('images')
-        ->join('units','units.id','=','images.img_id')
-        ->select('images.id as img_id','images.img_name')
-        ->where('units.number',$unit_number)
-        ->count();
+//        $countimages=DB::table('images')
+//        ->join('units','units.id','=','images.img_id')
+//        ->select('images.id as img_id','images.img_name')
+//        ->where('units.number',$unit_number)
+//        ->count();
         
         return view ('user.showunits',compact('projects','unit_number','building_number','compound_name','unit','images','countimages'));
     }

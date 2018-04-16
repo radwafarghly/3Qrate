@@ -179,10 +179,11 @@ class ProjectController extends Controller
    /*   $projects=DB::table('projects')
         ->select('projects.name')->get();*/
       $projects=Project::with('compound')->get();
-      $project=DB::table('projects')
-      ->select('projects.governate','projects.img','projects.city')
-      ->where('projects.name',$project_name)
-      ->get();
+//      $project=DB::table('projects')
+//      ->select('projects.governate','projects.img','projects.city')
+//      ->where('projects.name',$project_name)
+//      ->get();
+       $project=Project::where('projects.name',$project_name)->get();
             /*select compounds.name ,compounds.location  ,compounds.img from compounds JOIN projects ON projects.id=compounds.project_id WHERE projects.name='radwa'
             */ 
         $compounds=DB::table('compounds')
@@ -190,7 +191,6 @@ class ProjectController extends Controller
         ->select('compounds.name','compounds.location','compounds.img')
         ->where('projects.name',$project_name)
         ->get();
-      
        return view('user.showproject',compact('project_name','compounds','project','projects'));
    }
 

@@ -90,6 +90,23 @@
 <li><a href="{{ route('login') }}" style="color:#fff;  padding:5px 7px; margin:8px; font-size:15px">Login</a></li>
 <li><a href="{{ route('register') }}" style="color:#fff; padding:4px 6px; margin:8px; font-size:15px">Register</a></li>
 @else
+
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" style=" font-size:20px; color:#fff">
+      Notfication <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+
+      @foreach(auth()->user()->notifications as $notes)
+          <li>
+              <a href="">
+                  {!! $notes ->data['data'] !!}
+              </a>
+          </li>
+      @endforeach
+  </ul>
+</li>
+
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" style=" font-size:20px; color:#fff">
       {{ Auth::user()->name }} <span class="caret"></span>
@@ -128,6 +145,8 @@
      </ul>
      
     </li>
+
+
   @endguest
 
        

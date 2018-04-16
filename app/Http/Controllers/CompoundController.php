@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Unit;
 use Illuminate\Http\Request;
 use App\Compound;
 use App\Project;
@@ -170,10 +171,13 @@ class CompoundController extends Controller
         ->select('projects.name')->get();*/
   /*select compounds.name ,compounds.location ,compounds.img FROM compounds WHERE compounds.name='cairo'
 */
-        $compound =DB::table('compounds')
-        ->select('compounds.name','compounds.location','compounds.img')
-        ->where('compounds.name',$compound_name)
-        ->get();
+//        $compound =DB::table('compounds')
+//        ->select('compounds.name','compounds.location','compounds.img')
+//        ->where('compounds.name',$compound_name)
+//        ->get();
+        $compound=Compound::where('compounds.name',$compound_name)->get();
+
+
         /*SELECT units.size ,units.price ,units.img from units join buildings ON buildings.id =units.building_id JOIN compounds ON compounds.id =buildings.compound_id where compounds.name='assuit'
 */
         $units=DB::table('units')
@@ -184,6 +188,6 @@ class CompoundController extends Controller
         ->get();
 
 
-        return view ('user.showcompound',compact('projects','compound_name','compound','units'));
+        return view ('user.showcompound',compact('projects','compound_name','units','compound'));
             }
 }
