@@ -13,6 +13,9 @@ use App\Project;
 use App\Image;
 
 use Notification;
+use StreamLab\StreamLabProvider\Facades\StreamLabFacades;
+
+
 class UnitController extends Controller
 {
     /**
@@ -91,6 +94,8 @@ class UnitController extends Controller
          if ($unit->save()){
              $users=User::all();
              Notification::send($users, new AddUnitNotification($unit));
+             $data="New Unit Add with size :: " . $unit->size." <br> Added By " . auth()->user()->name;
+             StreamLabFacades::pushMessage('3qarte','Add Unit',$data);
          }
 
        // $input = $request->all();

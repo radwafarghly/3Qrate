@@ -21,7 +21,11 @@
     <link href="{{ asset('css/product.css') }}" rel="stylesheet">
     <link href="{{ asset('css/agency.min.css') }}" rel="stylesheet">
 
-
+<style>
+    .unread{
+        background-color: lightblue;
+    }
+</style>
 
  
 
@@ -92,15 +96,21 @@
 @else
 
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" style=" font-size:20px; color:#fff">
-      Notfication <span class="caret"></span>
+  <a href="#" class="dropdown-toggle notfication" data-toggle="dropdown" role="button" aria-expanded="false" style=" font-size:20px; color:#fff">
+      Notfication
+      <span id="count">
+          {{count(auth()->user()->unreadNotifications)}}
+      </span>
+
+      <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu" id ="shownotification">
 
       @foreach(auth()->user()->notifications as $notes)
           <li>
-              <a href="">
+              <a href="" class=" {{ $notes->read_at == null ? 'unread' : ''}}">
                   {!! $notes ->data['data'] !!}
+                  <?php  $notes ->markAsRead() ?>
               </a>
           </li>
       @endforeach
@@ -180,8 +190,7 @@
 
                       
         @yield('content')
- 
-        <div class="footer-section">
+    <div class="footer-section">
     <div class="footer1">
 	<div class="container">
 		    <div class="col-md-4 footer-one">
@@ -237,40 +246,66 @@
 								
 													
 					</div>
-				</div>
-    </div> 
-    
-
+        </div>
+</div>
+</div>
 
       <script src="{{ asset('js/app.js') }}"></script>
+
+    <script src="{{ asset('StreamLab/StreamLab.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script>
 
 
-$(function() {
-  /**
-  * NAME: Bootstrap 3 Multi-Level by Johne
-  * This script will active Triple level multi drop-down menus in Bootstrap 3.*
-  */
-  $('li.dropdown-submenu').on('click', function(event) {
-      event.stopPropagation(); 
-      if ($(this).hasClass('open')){
-          $(this).removeClass('open');
-      }else{
-          $('li.dropdown-submenu').removeClass('open');
-          $(this).addClass('open');
-     }
-  });
-});
+        $(function() {
+          /**
+          * NAME: Bootstrap 3 Multi-Level by Johne
+          * This script will active Triple level multi drop-down menus in Bootstrap 3.*
+          */
+          $('li.dropdown-submenu').on('click', function(event) {
+              event.stopPropagation();
+              if ($(this).hasClass('open')){
+                  $(this).removeClass('open');
+              }else{
+                  $('li.dropdown-submenu').removeClass('open');
+                  $(this).addClass('open');
+             }
+          });
+        });
+        //notifcation
+        var message,ShowDiv = $('#shownotification'),count=$('count'),c;
+        var slh = new StreamLabHtml();
+        var sls = new StreamLabSocket({
+            appId:"{{ config('stream_lab.app_id') }}",
+            channelName:"3qarte",
+            event:"*"
+        });
+
+        sls.socket.onmessage = function(res){
+            slh.setData(res);
+            if (slh.getSource()=== 'messages' ){
+                c=parseInt(count.html());
+                count.html(c+1);
+                message =slh.getMessage();
+                ShowDiv.prepend('<li><a href="" class="unread">'+message+'</a> </li>')
+            }
+        }
+        $('.notfication').on('click',function() {
+            count.html(0);
+            setTimeout(function () {
+                $('.unread').each(function() {
+                    $(this).removeClass('unread');
+                });
+            },5000);
+        });
 
 
 
 
 
-
-
-</script>
+   </script>
 
 
     <!-- Scripts -->
-</body>
-</html>
+
