@@ -4,7 +4,7 @@
 
 ## About 3Qrate
 
-3Qrate is a web application  with  Laravel framework , Can book Your Unit thorough it ,and send content to admin .
+3Qrate is a web application  with  Laravel framework , Can book Your Unit with my site it ,and send content to admin .
 
 
 
